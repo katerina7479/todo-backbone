@@ -9,7 +9,7 @@ define([
      var AppRouter = Backbone.Router.extend({
        routes: {
           '': "showTodos",
-          'item/:id': "showItem"
+          'item(/:id)': "showItem"
        },
        showTodos: function(){
            console.log("Showing Todos");

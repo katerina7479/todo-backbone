@@ -10,14 +10,18 @@ define([
         var TodoItemView = Backbone.View.extend({
             el: $('#main'),
             initialize: function() {
-                this.model = new TodoModel({id:this.id});
+                if (this.id) {
+                    this.model = new TodoModel({id: this.id});
+                }
+                else{
+                    this.model = new TodoModel();
+                }
                 var that = this;
                 this.model.fetch({
                     success: function () {
-                      that.render();
+                        that.render();
                     }
-                });
-            },
+                })},
             render: function() {
                 console.log(this.model);
                 var template = _.template(todoItemTemplate, {model: this.model});
