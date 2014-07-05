@@ -3,12 +3,14 @@ define([
     'backbone'
   ],
   function(_, Backbone){
-      var TodoModel;
-      TodoModel = Backbone.Model.extend({
-          title: "Thing",
-          description: "All the things",
-          done: false
+      var TodoItem = Backbone.Model.extend({
+          initialize: function() {
+              console.log("Initializing Model");
+          },
+          url: function(){
+              return this.id ? '/todos/' + this.id : '/todos';
+          }
       });
-      return TodoModel
+      return TodoItem;
   }
 );

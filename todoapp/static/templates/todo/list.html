@@ -1,10 +1,10 @@
 <div id="add" class="ui green button hover">Add
 </div>
 
-<% _.each(todos, function(todo){ %>
-<div class="ui blue segment item" data-value="<%= todo.id %>">
-  <%= todo.title %>
-  <% if (todo.done == 1){ %>
+<% _.each(collection.models, function(model){ %>
+<div class="ui blue segment item" data-value="<%= model.get('id') %>">
+  <%= model.get('title') %>
+  <% if (model.get('done') == 1){ %>
 	<i class="large green check icon"></i>
    <% }; %>
 </div>

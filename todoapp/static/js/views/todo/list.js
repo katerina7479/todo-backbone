@@ -4,23 +4,25 @@ define([
     'backbone',
 
     'collections/todos',
-    'text!templates/todo/list.html'
+    'text!../../../templates/todo/list.html'
     ],
     function($, _, Backbone, TodoCollection, todoListTemplate){
-        var TodoListView;
-        TodoListView = Backbone.View.extend({
+        var TodoListView = Backbone.View.extend({
             el: $('#main'),
-            render: function(){
-                var data = {};
-                var viewTemplate = _.template(todoListTemplate, data);
-                this.$el.append(viewTemplate);
+            initialize: function() {
+                this.collection = new TodoCollection();
+                var that = this;
+                this.collection.fetch({
+                    success: function () {
+                      that.render(that);
+                    }
+                });
             },
-            initialize: function(){
-              console.log("Initing List View");
-              this.collection = new TodoCollection();
-              this.collection.add({ title: "Build a website"});
-              var collectionTemplate = _.template(todoListTemplate, { todos: this.collection.models });
-              this.$el.html(collectionTemplate);
+            render: function() {
+                console.log(this.collection);
+                var collectionTemplate = _.template(todoListTemplate, {collection: this.collection});
+                console.log(collectionTemplate);
+                this.$el.html(collectionTemplate);
             }
         });
         return TodoListView;

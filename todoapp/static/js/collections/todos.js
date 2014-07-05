@@ -4,9 +4,12 @@ define([
     'models/todo'
   ],
   function(_, Backbone, TodoModel){
-      var TodoCollection;
-      TodoCollection = Backbone.Collection.extend({
-          model: TodoModel
+      var TodoCollection = Backbone.Collection.extend({
+          model: TodoModel,
+          url: '/todos',
+          parse: function(response) {
+            return response.response;
+          }
       });
       return TodoCollection;
   }

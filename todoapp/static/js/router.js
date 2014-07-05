@@ -2,27 +2,30 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/todo/list'
+    'views/todo/list',
+    'views/todo/edit'
    ],
-   function($, _, Backbone, TodoListView){
+   function($, _, Backbone, TodoListView, TodoItemView){
      var AppRouter = Backbone.Router.extend({
        routes: {
-          '/todos/#': "showTodos",
-          '*actions': 'defaultAction'
+          '': "showTodos",
+          'item': "showItem"
+       },
+       showTodos: function(){
+           console.log("Showing Todos");
+           var todoListView = new TodoListView();
+           todoListView.render();
+       },
+       showItem: function(){
+           console.log("Showing Item");
+           var todoItemView = new TodoItemView();
+           todoItemView.render();
        }
      });
 
      var initialize = function(){
        console.log("Executing Router Initialize");
        var app_router = new AppRouter();
-       app_router.on('showTodos', function(){
-          console.log("Showing Todos");
-          var todoListView = new TodoListView();
-          todoListView.render();
-       });
-       app_router.on('defaultAction', function(actions){
-          console.log("Route not found: ", actions)
-       });
        Backbone.history.start();
      };
      return {initialize: initialize};
