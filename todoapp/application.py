@@ -9,10 +9,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # List Page
-    todo_list = Todo.query.all()
-    return render_template("index.html", items=todo_list)
+    # Index
+    return render_template("index.html")
 
+
+@app.route('/todos/', methods=['GET'])
+def todos():
+    todo_list = Todo.query.all()
+    return todo_list
 
 @app.route('/todo/', defaults={'todo_id': None}, methods=['GET', 'POST'])
 @app.route('/todo/<todo_id>', methods=['GET', 'POST'])
@@ -37,7 +41,7 @@ def todo(todo_id):
             todo = db_session.query(Todo).get(todo_id)
         else:
             todo = {"id": "", "title": "", "description": "", "done": 0}
-        return render_template("todo.html", item=todo)
+        return todo
 
 
 if __name__ == '__main__':
