@@ -16,7 +16,6 @@ require([
       'app'
     ],
     function(App){
-      console.log("Initializing App");
       App.initialize()
     }
 );

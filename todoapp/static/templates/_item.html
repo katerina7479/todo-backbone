@@ -15,8 +15,8 @@
         <label for="notes">Notes</label>
         <textarea id="notes">{{ item.description }}</textarea>
       </div>
-      <div id="done" class="ui checkbox">
-        <input type="checkbox" name="done" {% if item.done %} checked="true" {% endif %}>
+      <div class="ui checkbox">
+        <input type="checkbox" id="done" {% if item.done %} checked="true" {% endif %}>
         <label for="done">Done</label>
       </div>
     </div>

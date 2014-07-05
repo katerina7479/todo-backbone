@@ -17,11 +17,10 @@ def index():
 @app.route('/todos/', methods=['GET', 'POST'])
 def todos():
     if request.method =='POST':
-        done = False if str(request.form["done"]) == 'false' else True  # JS to python false
-        todo = Todo(title=request.form["todo"], description=request.form["notes"], done=done)
+        todo = Todo(title=request.json["title"], description=request.json["description"], done=request.json["done"])
         db_session.add(todo)
         db_session.commit()
-        return "OK"
+        return jsonify({"id": todo.id, "title": todo.title, "description": todo.description, "done": todo.done})
     else:
         todo_list = []
         query = Todo.query.all()
@@ -30,19 +29,18 @@ def todos():
         response = jsonify(response=todo_list)
         return response
 
-@app.route('/todos/<todo_id>', methods=['GET', 'POST'])
+@app.route('/todos/<todo_id>', methods=['GET', 'PUT'])
 def todo(todo_id):
     # Detail Page
-    if request.method == "POST":
+    if request.method == "PUT":
         todo = db_session.query(Todo).get(todo_id)
-        todo.title = request.form["todo"]
-        todo.description = request.form["notes"]
-        todo.done = False if str(request.form["done"]) == 'false' else True  # JS to python false
+        todo.title = request.json["title"]
+        todo.description = request.json["description"]
+        todo.done = request.json["done"]
         db_session.commit()
-        return "OK"
     else: # GET
         todo = db_session.query(Todo).get(todo_id)
-        return jsonify({"id": todo.id, "title": todo.title, "description": todo.description, "done": todo.done})
+    return jsonify({"id": todo.id, "title": todo.title, "description": todo.description, "done": todo.done})
 
 
 if __name__ == '__main__':
