@@ -1,0 +1,25 @@
+<div class="ui form">
+	<div class="ui blue segment">
+	  <div  class="field">
+		<label>Todo Item</label>
+		<div class="ui left labeled icon input">
+		  <input id="todo" type="text" placeholder="Todo" value="<%= todo.title %>">
+		  <i class="tasks icon"></i>
+		  <div class="ui corner label">
+			<i class="icon asterisk"></i>
+		  </div>
+		</div>
+	  </div>
+	  <div  class="field">
+		<label for="notes">Notes</label>
+		<textarea id="notes"><%= todo.description %></textarea>
+	  </div>
+	  <div id="done" class="ui checkbox">
+		<input type="checkbox" name="done" <% if (todo.done ){ %> checked="true" <% }; %>>
+		<label for="done">Done</label>
+	  </div>
+	</div>
+
+	<div id="submit" class="ui green button submit hover">Ok</div>
+	<div id="cancel" class="ui red button hover">Cancel</div>
+</div>
