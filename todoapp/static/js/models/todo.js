@@ -7,7 +7,7 @@ define([
       TodoModel = Backbone.Model.extend({
           title: "Thing",
           description: "All the things",
-          done: False
+          done: false
       });
       return TodoModel
   }

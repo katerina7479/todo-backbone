@@ -4,7 +4,8 @@ from models import Todo
 from database import db_session
 
 
-app = Flask(__name__)
+
+app = Flask(__name__, template_folder='static/templates')
 
 
 @app.route('/')

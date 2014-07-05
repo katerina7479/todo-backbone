@@ -16,6 +16,7 @@ define([
                 this.$el.append(viewTemplate);
             },
             initialize: function(){
+              console.log("Initing List View");
               this.collection = new TodoCollection();
               this.collection.add({ title: "Build a website"});
               var collectionTemplate = _.template(todoListTemplate, { todos: this.collection.models });

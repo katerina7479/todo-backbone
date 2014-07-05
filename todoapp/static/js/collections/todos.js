@@ -1,7 +1,7 @@
 define([
     'underscore',
     'backbone',
-    'models, todos'
+    'models/todo'
   ],
   function(_, Backbone, TodoModel){
       var TodoCollection;
