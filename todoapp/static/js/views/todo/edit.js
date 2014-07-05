@@ -38,24 +38,26 @@ define([
                 "click #cancel": "redirect"
             },
             saveMe: function(){
-                var that = this;
-                var done = $('.ui.form').form('get field', 'done').prop("checked");
-                console.log(done);
-                dict = {"title": $('#todo').val().toString(),
-                        "description": $('#notes').val().toString(),
-                        "done": done
-                };
-                console.log(dict);
-                that.model.save(dict, {
-                    success: function(model, response){
-                        //console.log("Success");
-                        that.undelegateEvents();
-                        window.location = "/#";
-                    },
-                    error: function(model, response){
-                        console.log("Error Saving");
-                    }
-                });
+                if($('.ui.form').form('validate form')){
+                    var that = this;
+                    var done = $('.ui.form').form('get field', 'done').prop("checked");
+                    console.log(done);
+                    dict = {"title": $('#todo').val().toString(),
+                            "description": $('#notes').val().toString(),
+                            "done": done
+                    };
+                    console.log(dict);
+                    that.model.save(dict, {
+                        success: function(model, response){
+                            //console.log("Success");
+                            that.undelegateEvents();
+                            window.location = "/#";
+                        },
+                        error: function(model, response){
+                            console.log("Error Saving");
+                        }
+                    });
+                }
             },
             redirect: function(e){
                 e.preventDefault();
