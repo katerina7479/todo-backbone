@@ -9,16 +9,16 @@ define([
      var AppRouter = Backbone.Router.extend({
        routes: {
           '': "showTodos",
-          'item': "showItem"
+          'item/:id': "showItem"
        },
        showTodos: function(){
            console.log("Showing Todos");
            var todoListView = new TodoListView();
            todoListView.render();
        },
-       showItem: function(){
+       showItem: function(id){
            console.log("Showing Item");
-           var todoItemView = new TodoItemView();
+           var todoItemView = new TodoItemView({id:id});
            todoItemView.render();
        }
      });

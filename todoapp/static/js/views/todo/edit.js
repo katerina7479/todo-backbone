@@ -10,7 +10,7 @@ define([
         var TodoItemView = Backbone.View.extend({
             el: $('#main'),
             initialize: function() {
-                this.model = new TodoModel();
+                this.model = new TodoModel({id:this.id});
                 var that = this;
                 this.model.fetch({
                     success: function () {

@@ -42,7 +42,7 @@ def todo(todo_id):
         return "OK"
     else: # GET
         todo = db_session.query(Todo).get(todo_id)
-        return jsonify(todo)
+        return jsonify({"id": todo.id, "title": todo.title, "description": todo.description, "done": todo.done})
 
 
 if __name__ == '__main__':
