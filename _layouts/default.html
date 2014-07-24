@@ -31,41 +31,7 @@
         <hr>
 
         <section id="main_content">
-          <h1>
-<a name="todo---backbonejs" class="anchor" href="#todo---backbonejs"><span class="octicon octicon-link"></span></a>Todo - Backbone.js</h1>
-
-<h2>
-<a name="with-flask-sqlalchemy-semantic-ui-and-backbonejs" class="anchor" href="#with-flask-sqlalchemy-semantic-ui-and-backbonejs"><span class="octicon octicon-link"></span></a>With Flask, SqlAlchemy, Semantic-UI, and Backbone.js</h2>
-
-<p>This is a demo site showing another way to use Flask to make a website.
-This time, Flask is a RESTful API, accepting and returning json.
-I used a SqlAlchemy non-declarative model, and simple sqlite test db.
-Semantic-UI for the front-end CSS.
-HTML rendered client-side with Backbone.js, underscore.js for templates,
-and require.js for async js loading.</p>
-
-<p>Vagrant upload, you can start the website starts with:</p>
-
-<pre><code> &gt; vagrant up
- ? (enter password at prompt)
- &gt; vagrant ssh
- &gt; cd projects/todoapp
- &gt; python application.py
-</code></pre>
-
-<p>** Requires Virtualbox, Vagrant, &amp; Git **</p>
-
-<p>References at:</p>
-
-<ul>
-<li><a href="http://flask.pocoo.org/docs/">Flask</a></li>
-<li><a href="http://flask.pocoo.org/docs/patterns/sqlalchemy/#manual-object-relational-mapping">Sqlalchemy in Flask</a></li>
-<li><a href="http://backbonejs.org/">Backbone.js</a></li>
-<li><a href="http://underscorejs.org/">Underscore.js</a></li>
-<li><a href="http://requirejs.org">Require.js</a></li>
-<li><a href="http://semantic-ui.com/element.html">Semantic-ui</a></li>
-<li><a href="https://docs.vagrantup.com/v2/">Vagrant</a></li>
-</ul>
+            {{ content }}
         </section>
 
         <footer>
